@@ -4,7 +4,7 @@
 .pokesprite.pokemon {
   width: 68px;
   height: 56px;
-  background: url("/pokesprite-pokemon-gen8.png");
+  background: url("pokesprite-pokemon-gen8.png");
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
 }
