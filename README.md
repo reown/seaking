@@ -1,6 +1,10 @@
 # seaking
 
 weakness seeker to aid my battle frontier matches
+pokedex updated to gen5
+including some alolan & galarian forms
+missing alternate forms
+abilities updated to gen9
 
 # Credits
 
