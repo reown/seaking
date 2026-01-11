@@ -118,5 +118,17 @@
     "name": "Togekiss",
     "type": ["Normal", "Flying"],
     "ability": ["Hustle", "Serene Grace", "Super Luck"]
+  },
+  {
+    "id": 546,
+    "name": "Cottonee",
+    "type": ["Grass"],
+    "ability": ["Prankster", "Infiltrator", "Chlorophyll"]
+  },
+  {
+    "id": 547,
+    "name": "Whimsicott",
+    "type": ["Grass"],
+    "ability": ["Prankster", "Infiltrator", "Chlorophyll"]
   }
 ]
