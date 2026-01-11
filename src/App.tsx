@@ -39,6 +39,23 @@ function App() {
     getPokemon(query);
   }, [fairy]);
 
+  useEffect(() => {
+    const temp: activeAbilityType = {};
+
+    //check for ability that affects type chart
+    found.forEach((found) => {
+      const firstmatch = found.ability.find((item) =>
+        abilitymulti.some((item2) => item === item2.ability)
+      );
+      if (firstmatch) {
+        temp[found.name] = firstmatch;
+      }
+    });
+    if (temp) {
+      setActiveAbility((prev) => ({ ...prev, ...temp }));
+    }
+  }, [found]);
+
   const getPokemon = (e: string) => {
     setQuery(e);
     setFound([]);
@@ -149,19 +166,6 @@ function App() {
     return [weak, strong, immune];
   };
 
-  const checkAbilityMulti = (name: string, ability: string[]) => {
-    //check if abilitymulti is needed, select first case
-    let temp = false;
-    ability.forEach((ability) => {
-      if (abilitymulti.some((item2) => ability === item2.ability)) {
-        if (!(name in activeAbility) && !temp) {
-          setActiveAbility((prev) => ({ ...prev, [name]: ability }));
-          temp = !temp;
-        }
-      }
-    });
-  };
-
   const handleAbilityClick = (name: string, ability: string) => {
     setActiveAbility((prev) => ({ ...prev, [name]: ability }));
   };
@@ -206,8 +210,6 @@ function App() {
   };
 
   const renderPoke = (found: pokedexType) => {
-    checkAbilityMulti(found.name, found.ability);
-
     return (
       <div className="card-body">
         <div className="row">
