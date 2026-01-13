@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getSprite, getDesc, getMulti } from "./helper";
 import pokedex from "./data/pokedex.json";
-import pokedexnf from "./data/pokedexnofairy.json";
-import regionaldex from "./data/regionaldex.json";
+import nofairydex from "./data/nofairydex.json";
+import altformdex from "./data/altformdex.json";
 import abilitymulti from "./data/abilitymulti.json";
 import "./css/App.css";
 import "./css/Type.css";
@@ -10,6 +10,15 @@ import "./css/Type.css";
 interface PokedexMap {
   id: number;
   name: string;
+  type: string[];
+  ability: string[];
+}
+
+interface AltFormMap {
+  id: number;
+  name: string;
+  base: string;
+  tag: string;
   type: string[];
   ability: string[];
 }
@@ -75,7 +84,7 @@ function App() {
       //check if fairy is toggled, replace from pokedex_nofairy
       if (fairy) {
         const checknf = checkf.map((item) => {
-          const match = pokedexnf.find((item2) => item.id === item2.id);
+          const match = nofairydex.find((item2) => item.id === item2.id);
 
           return match ? match : item;
         });
@@ -129,7 +138,7 @@ function App() {
     );
   };
 
-  const renderPoke = (found: PokedexMap) => {
+  const renderPoke = (found: PokedexMap | AltFormMap) => {
     return (
       <div className="card-body">
         <div className="row">
@@ -140,12 +149,17 @@ function App() {
           </div>
           <div className="col sprite">
             <span
-              className={`pokesprite pokemon ${getSprite(found.name)} ${
-                shiny ? "shiny" : ""
-              }`}
+              className={`pokesprite pokemon ${getSprite(
+                "base" in found ? found.base : found.name,
+                "tag" in found ? found.tag : ""
+              )} ${shiny ? "shiny" : ""}`}
             />
           </div>
-          <div className="col name">{found.name}</div>
+          <div className="col name">
+            {found.id}
+            <br />
+            {"base" in found ? found.base : found.name}
+          </div>
           <div className="col">
             {found.ability.map((ability, index, array) => {
               //check if is hidden ability, > 1 & last
@@ -276,7 +290,7 @@ function App() {
       </div>
       {found.map((found) => {
         //check for regional forms with id
-        const rmatch = regionaldex.filter((item) => item.id === found.id);
+        const rmatch = altformdex.filter((item) => item.id === found.id);
         const hasRegional = rmatch.length > 0;
 
         return (

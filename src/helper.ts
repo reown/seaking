@@ -5,7 +5,7 @@ import abilitymulti from "./data/abilitymulti.json";
 type StringMap = Record<string, string>;
 type MultiMap = Record<string, number>;
 
-export const getSprite = (name: string) => {
+export const getSprite = (name: string, tag: string) => {
   //match base pokesprite syntax
   let spriteName = name
     .toLocaleLowerCase()
@@ -15,21 +15,8 @@ export const getSprite = (name: string) => {
     .replace(/♀/g, "-f")
     .replace(/♂/g, "-m");
 
-  //regional form syntax
-  const replacements = [
-    ["alolan", "alola"],
-    ["galarian", "galar"],
-  ];
-
-  for (const [target, replacement] of replacements) {
-    if (spriteName.includes(target)) {
-      return spriteName
-        .replace(target, replacement)
-        .replace(
-          /^([^-\s]+)-(.*)$/,
-          (match, first, rest) => `${rest}-${first}`
-        );
-    }
+  if (tag) {
+    spriteName = spriteName.concat("-", tag.toLowerCase());
   }
 
   return spriteName;

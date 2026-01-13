@@ -2,199 +2,321 @@
   {
     "id": 19,
     "name": "Alolan Rattata",
+    "base": "Rattata",
+    "tag": "Alola",
     "type": ["Dark", "Normal"],
     "ability": ["Gluttony", "Hustle", "Thick Fat"]
   },
   {
     "id": 20,
     "name": "Alolan Raticate",
+    "base": "Raticate",
+    "tag": "Alola",
     "type": ["Dark", "Normal"],
     "ability": ["Gluttony", "Hustle", "Thick Fat"]
   },
   {
     "id": 26,
     "name": "Alolan Raichu",
+    "base": "Raichu",
+    "tag": "Alola",
     "type": ["Electric", "Psychic"],
     "ability": ["Surge Surfer"]
   },
   {
     "id": 27,
     "name": "Alolan Sandshrew",
+    "base": "Sandshrew",
+    "tag": "Alola",
     "type": ["Ice", "Steel"],
     "ability": ["Snow Cloak", "Slush Rush"]
   },
   {
     "id": 28,
     "name": "Alolan Sandslash",
+    "base": "Sandslash",
+    "tag": "Alola",
     "type": ["Ice", "Steel"],
     "ability": ["Snow Cloak", "Slush Rush"]
   },
   {
     "id": 37,
     "name": "Alolan Vulpix",
+    "base": "Vulpix",
+    "tag": "Alola",
     "type": ["Ice"],
     "ability": ["Snow Cloak", "Snow Warning"]
   },
   {
     "id": 38,
     "name": "Alolan Ninetales",
+    "base": "Ninetales",
+    "tag": "Alola",
     "type": ["Ice", "Fairy"],
     "ability": ["Snow Cloak", "Snow Warning"]
   },
   {
     "id": 50,
     "name": "Alolan Diglett",
+    "base": "Diglett",
+    "tag": "Alola",
     "type": ["Ground", "Steel"],
     "ability": ["Sand Veil", "Tangling Hair", "Sand Force"]
   },
   {
     "id": 51,
     "name": "Alolan Dugtrio",
+    "base": "Dugtrio",
+    "tag": "Alola",
     "type": ["Ground", "Steel"],
     "ability": ["Sand Veil", "Tangling Hair", "Sand Force"]
   },
   {
     "id": 52,
     "name": "Alolan Meowth",
+    "base": "Meowth",
+    "tag": "Alola",
     "type": ["Dark"],
     "ability": ["Pickup", "Technician", "Rattled"]
   },
   {
     "id": 52,
     "name": "Galarian Meowth",
+    "base": "Meowth",
+    "tag": "Galar",
     "type": ["Steel"],
     "ability": ["Pickup", "Tough Claws", "Unnerve"]
   },
   {
     "id": 53,
     "name": "Alolan Persian",
+    "base": "Persian",
+    "tag": "Alola",
     "type": ["Dark"],
     "ability": ["Fur Coat", "Technician", "Rattled"]
   },
   {
     "id": 74,
     "name": "Alolan Geodude",
+    "base": "Geodude",
+    "tag": "Alola",
     "type": ["Rock", "Electric"],
     "ability": ["Magnet Pull", "Sturdy", "Galvanize"]
   },
   {
     "id": 75,
     "name": "Alolan Graveler",
+    "base": "Graveler",
+    "tag": "Alola",
     "type": ["Rock", "Electric"],
     "ability": ["Magnet Pull", "Sturdy", "Galvanize"]
   },
   {
     "id": 76,
     "name": "Alolan Golem",
+    "base": "Golem",
+    "tag": "Alola",
     "type": ["Rock", "Electric"],
     "ability": ["Magnet Pull", "Sturdy", "Galvanize"]
   },
   {
     "id": 77,
     "name": "Galarian Ponyta",
+    "base": "Ponyta",
+    "tag": "Galar",
     "type": ["Psychic"],
     "ability": ["Run Away", "Pastel Veil", "Anticipation"]
   },
   {
     "id": 78,
     "name": "Galarian Rapidash",
+    "base": "Rapidash",
+    "tag": "Galar",
     "type": ["Psychic", "Fairy"],
     "ability": ["Run Away", "Pastel Veil", "Anticipation"]
   },
   {
     "id": 79,
     "name": "Galarian Slowpoke",
+    "base": "Slowpoke",
+    "tag": "Galar",
     "type": ["Psychic"],
     "ability": ["Gluttony", "Own Tempo", "Regenerator"]
   },
   {
     "id": 80,
     "name": "Galarian Slowbro",
+    "base": "Slowbro",
+    "tag": "Galar",
     "type": ["Poison", "Psychic"],
     "ability": ["Quick Draw", "Own Tempo", "Regenerator"]
   },
   {
     "id": 83,
     "name": "Galarian Farfetch'd",
+    "base": "Farfetch'd",
+    "tag": "Galar",
     "type": ["Fighting"],
     "ability": ["Steadfast", "Scrappy"]
   },
   {
     "id": 88,
     "name": "Alolan Grimer",
+    "base": "Grimer",
+    "tag": "Alola",
     "type": ["Poison", "Dark"],
     "ability": ["Poison Touch", "Gluttony", "Power of Alchemy"]
   },
   {
     "id": 89,
     "name": "Alolan Muk",
+    "base": "Muk",
+    "tag": "Alola",
     "type": ["Poison", "Dark"],
     "ability": ["Poison Touch", "Gluttony", "Power of Alchemy"]
   },
   {
     "id": 103,
     "name": "Alolan Exeggutor",
+    "base": "Exeggutor",
+    "tag": "Alola",
     "type": ["Grass", "Dragon"],
     "ability": ["Frisk", "Harvest"]
   },
   {
     "id": 105,
     "name": "Alolan Marowak",
+    "base": "Marowak",
+    "tag": "Alola",
     "type": ["Fire", "Ghost"],
     "ability": ["Cursed Body", "Lightning Rod", "Rock Head"]
   },
   {
     "id": 110,
     "name": "Galarian Weezing",
+    "base": "Weezing",
+    "tag": "Galar",
     "type": ["Poison", "Fairy"],
     "ability": ["Levitate", "Neutralizing Gas", "Misty Surge"]
   },
   {
     "id": 122,
     "name": "Galarian Mr. Mime",
+    "base": "Mr. Mime",
+    "tag": "Galar",
     "type": ["Ice", "Psychic"],
     "ability": ["Vital Spirit", "Screen Cleaner", "Ice Body"]
   },
   {
     "id": 144,
     "name": "Galarian Articuno",
+    "base": "Articuno",
+    "tag": "Galar",
     "type": ["Psychic", "Flying"],
     "ability": ["Competitive"]
   },
   {
     "id": 145,
     "name": "Galarian Zapdos",
+    "base": "Zapdos",
+    "tag": "Galar",
     "type": ["Fighting", "Flying"],
     "ability": ["Defiant"]
   },
   {
     "id": 146,
     "name": "Galarian Moltres",
+    "base": "Moltres",
+    "tag": "Galar",
     "type": ["Dark", "Flying"],
     "ability": ["Berserk"]
   },
   {
     "id": 199,
     "name": "Galarian Slowking",
+    "base": "Slowking",
+    "tag": "Galar",
     "type": ["Poison", "Psychic"],
     "ability": ["Curious Medicine", "Own Tempo", "Regenerator"]
   },
   {
     "id": 222,
     "name": "Galarian Corsola",
+    "base": "Corsola",
+    "tag": "Galar",
     "type": ["Ghost"],
     "ability": ["Weak Armor", "Cursed Body"]
   },
   {
     "id": 263,
     "name": "Galarian Zigzagoon",
+    "base": "Zigzagoon",
+    "tag": "Galar",
     "type": ["Dark", "Normal"],
     "ability": ["Pickup", "Gluttony", "Quick Feet"]
   },
   {
     "id": 264,
     "name": "Galarian Linoone",
+    "base": "Linoone",
+    "tag": "Galar",
     "type": ["Dark", "Normal"],
     "ability": ["Pickup", "Gluttony", "Quick Feet"]
+  },
+  {
+    "id": 554,
+    "name": "Galarian Darumaka",
+    "base": "Darumaka",
+    "tag": "Galar",
+    "type": ["Ice"],
+    "ability": ["Hustle", "Inner Focus"]
+  },
+  {
+    "id": 555,
+    "name": "Standard Mode",
+    "base": "Darmanitan",
+    "tag": "",
+    "type": ["Fire"],
+    "ability": ["Sheer Force", "Zen Mode"]
+  },
+  {
+    "id": 555,
+    "name": "Zen Mode",
+    "base": "Darmanitan",
+    "tag": "Zen",
+    "type": ["Fire", "Psychic"],
+    "ability": ["Sheer Force", "Zen Mode"]
+  },
+  {
+    "id": 555,
+    "name": "Galarian Standard Mode",
+    "base": "Darmanitan",
+    "tag": "Galar",
+    "type": ["Ice"],
+    "ability": ["Gorilla Tactics", "Zen Mode"]
+  },
+  {
+    "id": 555,
+    "name": "Galarian Zen Mode",
+    "base": "Darmanitan",
+    "tag": "Galar-Zen",
+    "type": ["Ice", "Fire"],
+    "ability": ["Gorilla Tactics", "Zen Mode"]
+  },
+  {
+    "id": 562,
+    "name": "Galarian Yamask",
+    "base": "Yamask",
+    "tag": "Galar",
+    "type": ["Ground", "Ghost"],
+    "ability": ["Wandering Spirit"]
+  },
+  {
+    "id": 618,
+    "name": "Galarian Stunfisk",
+    "base": "Stunfisk",
+    "tag": "Galar",
+    "type": ["Ground", "Steel"],
+    "ability": ["Mimicry"]
   }
 ]
