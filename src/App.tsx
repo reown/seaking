@@ -1,46 +1,36 @@
 import { useEffect, useState } from "react";
+import { getSprite, getDesc, getMulti } from "./helper";
 import pokedex from "./data/pokedex.json";
 import pokedexnf from "./data/pokedexnofairy.json";
 import regionaldex from "./data/regionaldex.json";
-import typechart from "./data/typechart.json";
 import abilitymulti from "./data/abilitymulti.json";
-import abilitydescjson from "./data/abilitydesc.json";
 import "./css/App.css";
 import "./css/Type.css";
 
-interface pokedexType {
+interface PokedexMap {
   id: number;
   name: string;
   type: string[];
   ability: string[];
 }
 
-interface multiType {
-  [key: string]: number;
-}
-
-interface abilityDescType {
-  [key: string]: string;
-}
-
-type activeAbilityType = Record<string, string>;
+type ActiveAbilityMap = Record<string, string>;
 
 function App() {
   const [query, setQuery] = useState<string>("");
-  const [found, setFound] = useState<pokedexType[]>([]);
+  const [found, setFound] = useState<PokedexMap[]>([]);
   const [fairy, setFairy] = useState<boolean>(false);
   const [shiny, setShiny] = useState<boolean>(false);
   const [hoverAbility, setHoverAbility] = useState<string | null>(null);
   const [hoverPokemon, setHoverPokemon] = useState<string | null>(null);
-  const [activeAbility, setActiveAbility] = useState<activeAbilityType>({});
-  const abilitydesc = abilitydescjson as abilityDescType;
+  const [activeAbility, setActiveAbility] = useState<ActiveAbilityMap>({});
 
   useEffect(() => {
     getPokemon(query);
   }, [fairy]);
 
   useEffect(() => {
-    const temp: activeAbilityType = {};
+    const temp: ActiveAbilityMap = {};
 
     //check for ability that affects type chart
     found.forEach((found) => {
@@ -51,15 +41,30 @@ function App() {
         temp[found.name] = firstmatch;
       }
     });
-    if (temp) {
-      setActiveAbility((prev) => ({ ...prev, ...temp }));
+
+    //sets avtive ability & don't replace known active
+    if (Object.keys(temp).length > 0) {
+      setActiveAbility((prev) => {
+        const newState = { ...prev };
+        Object.keys(temp).forEach((key) => {
+          if (!(key in newState)) {
+            newState[key] = temp[key];
+          }
+        });
+
+        return newState;
+      });
     }
   }, [found]);
 
   const getPokemon = (e: string) => {
     setQuery(e);
     setFound([]);
-    setActiveAbility({});
+
+    //save active abilities until new search
+    if (e.length < 3) {
+      setActiveAbility({});
+    }
 
     //search pokedex for names that includes substring
     if (e.length > 2) {
@@ -81,91 +86,6 @@ function App() {
     }
   };
 
-  const getSprite = (name: string) => {
-    //match base pokesprite syntax
-    let tempName = name
-      .toLocaleLowerCase()
-      .replace(/['.]/g, "")
-      .replace(/\s+/g, "-")
-      //nidorans
-      .replace(/♀/g, "-f")
-      .replace(/♂/g, "-m");
-
-    //regional form syntax
-    const replacements = [
-      ["alolan", "alola"],
-      ["galarian", "galar"],
-    ];
-
-    for (const [target, replacement] of replacements) {
-      if (tempName.includes(target)) {
-        return tempName
-          .replace(target, replacement)
-          .replace(
-            /^([^-\s]+)-(.*)$/,
-            (match, first, rest) => `${rest}-${first}`
-          );
-      }
-    }
-
-    return tempName;
-  };
-
-  const getDesc = (ability: string, isHA: boolean) => {
-    //specify HA in description / return not found
-    return abilitydesc[ability]
-      ? isHA
-        ? `Hidden Ability: ${abilitydesc[ability]}`
-        : abilitydesc[ability]
-      : "Ability description not found";
-  };
-
-  const getMulti = (name: string, type: string[]) => {
-    //deep copy from json
-    let multi: multiType = JSON.parse(
-      JSON.stringify(typechart.find((def) => def.type === "default")?.multi)
-    );
-
-    //multiply multi for dual types
-    type.map((type) => {
-      const tempMulti: multiType = JSON.parse(
-        JSON.stringify(typechart.find((item) => item.type === type)?.multi)
-      );
-      Object.keys(tempMulti).forEach((key) => {
-        multi[key] *= tempMulti[key];
-      });
-    });
-
-    //check ability for multi
-    if (name in activeAbility) {
-      const amatch = abilitymulti.find(
-        (item) => item.ability === activeAbility[name]
-      );
-      if (amatch) {
-        const amulti: multiType = JSON.parse(JSON.stringify(amatch.multi));
-        Object.keys(amulti).forEach((key) => {
-          multi[key] *= amulti[key];
-        });
-      }
-    }
-
-    //split multi to weak/strong/immune
-    const weak: multiType = {};
-    const strong: multiType = {};
-    const immune: multiType = {};
-    Object.keys(multi).forEach((key) => {
-      if (multi[key] > 1.0) {
-        weak[key] = multi[key];
-      } else if (multi[key] > 0.0 && multi[key] < 1.0) {
-        strong[key] = multi[key];
-      } else if (multi[key] === 0.0) {
-        immune[key] = multi[key];
-      }
-    });
-
-    return [weak, strong, immune];
-  };
-
   const handleAbilityClick = (name: string, ability: string) => {
     setActiveAbility((prev) => ({ ...prev, [name]: ability }));
   };
@@ -179,7 +99,7 @@ function App() {
     return (
       <nav className="navbar navbar-dark navbar-expand-lg">
         <div className="container-fluid">
-          <a className="navbar-brand" href="https://github.com/Reown/seaking">
+          <a className="navbar-brand" href="https://github.com/reown/seaking">
             Seaking
           </a>
           <ul className="navbar-nav ms-auto">
@@ -194,7 +114,7 @@ function App() {
               </div>
             </li>
             <li className="nav-item">
-              Revert Gen 1-5 Fairy
+              Non-Fairy Version
               <div className="form-switch">
                 <input
                   className="form-check-input"
@@ -209,7 +129,7 @@ function App() {
     );
   };
 
-  const renderPoke = (found: pokedexType) => {
+  const renderPoke = (found: PokedexMap) => {
     return (
       <div className="card-body">
         <div className="row">
@@ -225,14 +145,7 @@ function App() {
               }`}
             />
           </div>
-          <div
-            className="col name"
-            onClick={() => {
-              console.log(activeAbility);
-            }}
-          >
-            {found.name}
-          </div>
+          <div className="col name">{found.name}</div>
           <div className="col">
             {found.ability.map((ability, index, array) => {
               //check if is hidden ability, > 1 & last
@@ -266,7 +179,7 @@ function App() {
   };
 
   const renderMulti = (name: string, type: string[]) => {
-    const [weak, strong, immune] = getMulti(name, type);
+    const [weak, strong, immune] = getMulti(type, activeAbility[name]);
 
     return (
       <div className="card-body">
@@ -336,7 +249,7 @@ function App() {
     );
   };
 
-  const renderTabContent = (found: pokedexType, isDefault: boolean) => {
+  const renderTabContent = (found: PokedexMap, isDefault: boolean) => {
     return (
       <div
         className={`tab-pane fade ${isDefault ? "show active" : ""}`}
