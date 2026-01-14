@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { getSprite, getDesc, getMulti } from "./helper";
-import pokedex from "./data/pokedex.json";
-import nofairydex from "./data/nofairydex.json";
-import altformdex from "./data/altformdex.json";
-import abilitymulti from "./data/abilitymulti.json";
+import pokedexData from "./data/pokedex.json";
+import nofairydexData from "./data/nofairydex.json";
+import altformdexData from "./data/altformdex.json";
+import abilityMultiData from "./data/abilitymulti.json";
 import "./css/App.css";
 import "./css/Type.css";
 
@@ -14,7 +14,7 @@ interface PokedexMap {
   ability: string[];
 }
 
-interface AltFormMap {
+interface AltformdexMap {
   id: number;
   name: string;
   base: string;
@@ -23,7 +23,17 @@ interface AltFormMap {
   ability: string[];
 }
 
+interface AbilityMultiMap {
+  ability: string;
+  multi: Partial<Record<string, number>>;
+}
+
 type ActiveAbilityMap = Record<string, string>;
+
+const pokedex: PokedexMap[] = pokedexData;
+const nofairydex: PokedexMap[] = nofairydexData;
+const altformdex: AltformdexMap[] = altformdexData;
+const abilityMulti: AbilityMultiMap[] = abilityMultiData;
 
 function App() {
   const [query, setQuery] = useState<string>("");
@@ -39,25 +49,25 @@ function App() {
   }, [fairy]);
 
   useEffect(() => {
-    const temp: ActiveAbilityMap = {};
+    const defActive: ActiveAbilityMap = {};
 
     //check for ability that affects type chart
     found.forEach((found) => {
       const firstmatch = found.ability.find((item) =>
-        abilitymulti.some((item2) => item === item2.ability)
+        abilityMulti.some((item2) => item === item2.ability)
       );
       if (firstmatch) {
-        temp[found.name] = firstmatch;
+        defActive[found.name] = firstmatch;
       }
     });
 
     //sets avtive ability & don't replace known active
-    if (Object.keys(temp).length > 0) {
+    if (Object.keys(defActive).length > 0) {
       setActiveAbility((prev) => {
         const newState = { ...prev };
-        Object.keys(temp).forEach((key) => {
+        Object.keys(defActive).forEach((key) => {
           if (!(key in newState)) {
-            newState[key] = temp[key];
+            newState[key] = defActive[key];
           }
         });
 
@@ -138,7 +148,10 @@ function App() {
     );
   };
 
-  const renderPoke = (found: PokedexMap | AltFormMap) => {
+  const renderPoke = (
+    found: PokedexMap | AltformdexMap,
+    activeAbility: string
+  ) => {
     return (
       <div className="card-body">
         <div className="row">
@@ -156,7 +169,7 @@ function App() {
             />
           </div>
           <div className="col name">
-            {found.id}
+            #{found.id}
             <br />
             {"base" in found ? found.base : found.name}
           </div>
@@ -164,7 +177,7 @@ function App() {
             {found.ability.map((ability, index, array) => {
               //check if is hidden ability, > 1 & last
               const isHA = index > 0 && index === array.length - 1;
-              const isSelected = activeAbility[found.name] === ability;
+              const isSelected = activeAbility === ability;
 
               return (
                 <div
@@ -192,8 +205,8 @@ function App() {
     );
   };
 
-  const renderMulti = (name: string, type: string[]) => {
-    const [weak, strong, immune] = getMulti(type, activeAbility[name]);
+  const renderMulti = (type: string[], activeAbility: string) => {
+    const [weak, strong, immune] = getMulti(type, activeAbility);
 
     return (
       <div className="card-body">
@@ -269,8 +282,8 @@ function App() {
         className={`tab-pane fade ${isDefault ? "show active" : ""}`}
         id={`${found.name.replace(/[\s']+/g, "-")}`}
       >
-        {renderPoke(found)}
-        {renderMulti(found.name, found.type)}
+        {renderPoke(found, activeAbility[found.name])}
+        {renderMulti(found.type, activeAbility[found.name])}
       </div>
     );
   };
@@ -289,29 +302,31 @@ function App() {
         />
       </div>
       {found.map((found) => {
-        //check for regional forms with id
+        //check for alternate forms with id
         const rmatch = altformdex.filter((item) => item.id === found.id);
-        const hasRegional = rmatch.length > 0;
+        const hasAlternate = rmatch.length > 0;
 
         return (
           <>
             <hr />
             <div className="card mx-auto">
-              {hasRegional ? (
+              {hasAlternate ? (
                 <>
                   <ul className="nav nav-tabs">
-                    {renderNavTab(found.name, true)}
-                    {rmatch.map((item) => renderNavTab(item.name, false))}
+                    {rmatch.map((item, index) =>
+                      renderNavTab(item.name, index === 0)
+                    )}
                   </ul>
                   <div className="tab-content">
-                    {renderTabContent(found, true)}
-                    {rmatch.map((item) => renderTabContent(item, false))}
+                    {rmatch.map((item, index) =>
+                      renderTabContent(item, index === 0)
+                    )}
                   </div>
                 </>
               ) : (
                 <>
-                  {renderPoke(found)}
-                  {renderMulti(found.name, found.type)}
+                  {renderPoke(found, activeAbility[found.name])}
+                  {renderMulti(found.type, activeAbility[found.name])}
                 </>
               )}
             </div>

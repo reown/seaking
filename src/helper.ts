@@ -1,9 +1,22 @@
-import abilitydesc from "./data/abilitydesc.json";
-import typechart from "./data/typechart.json";
-import abilitymulti from "./data/abilitymulti.json";
+import abilityDescData from "./data/abilitydesc.json";
+import typeChartData from "./data/typechart.json";
+import abilityMultiData from "./data/abilitymulti.json";
 
-type StringMap = Record<string, string>;
+interface TypeChartMap {
+  type: string;
+  multi: { [key: string]: number };
+}
+
+interface AbilityMultiMap {
+  ability: string;
+  multi: Partial<MultiMap>;
+}
+
 type MultiMap = Record<string, number>;
+
+const abilityDesc: Record<string, string> = abilityDescData;
+const typeChart: TypeChartMap[] = typeChartData;
+const abilityMulti: AbilityMultiMap[] = abilityMultiData;
 
 export const getSprite = (name: string, tag: string) => {
   //match base pokesprite syntax
@@ -23,27 +36,25 @@ export const getSprite = (name: string, tag: string) => {
 };
 
 export const getDesc = (ability: string, isHA: boolean) => {
-  const desc: StringMap = abilitydesc;
-
   //specify HA in description / return not found
-  if (!desc[ability]) {
+  if (!abilityDesc[ability]) {
     return "Ability description not found";
   }
 
-  return isHA ? `Hidden Ability: ${desc[ability]}` : desc[ability];
+  return isHA
+    ? `Hidden Ability: ${abilityDesc[ability]}`
+    : abilityDesc[ability];
 };
 
 export const getMulti = (type: string[], activeAbility?: string) => {
   //shallow copy from json
-  let multi: MultiMap = {
-    ...typechart.find((def) => def.type === "default")!.multi,
+  let multi = {
+    ...typeChart.find((def) => def.type === "default")!.multi,
   };
 
   //multiply multi for dual types
   type.map((type) => {
-    const tempMulti: MultiMap = typechart.find(
-      (item) => item.type === type
-    )!.multi;
+    const tempMulti = typeChart.find((item) => item.type === type)!.multi;
     Object.keys(tempMulti).forEach((key) => {
       multi[key] *= tempMulti[key];
     });
@@ -51,13 +62,14 @@ export const getMulti = (type: string[], activeAbility?: string) => {
 
   //check ability for multi
   if (activeAbility) {
-    const amatch = abilitymulti.find(
+    const amatch = abilityMulti.find(
       (item) => item.ability === activeAbility
     )?.multi;
     if (amatch) {
-      const amulti: MultiMap = amatch as unknown as MultiMap;
-      Object.keys(amulti).forEach((key) => {
-        multi[key] *= amulti[key];
+      Object.keys(amatch).forEach((key) => {
+        if (amatch[key] !== undefined) {
+          multi[key] *= amatch[key];
+        }
       });
     }
   }
