@@ -21,7 +21,7 @@ const abilityMulti: AbilityMultiMap[] = abilityMultiData;
 export const getSprite = (name: string, tag: string) => {
   //match base pokesprite syntax
   let spriteName = name
-    .toLocaleLowerCase()
+    .toLowerCase()
     .replace(/['.]/g, "")
     .replace(/\s+/g, "-")
     //nidorans

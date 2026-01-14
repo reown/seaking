@@ -1,11 +1,27 @@
 [
   {
     "id": 19,
+    "name": "Rattata",
+    "base": "Rattata",
+    "tag": "",
+    "type": ["Normal"],
+    "ability": ["Run Away", "Guts", "Hustle"]
+  },
+  {
+    "id": 19,
     "name": "Alolan Rattata",
     "base": "Rattata",
     "tag": "Alola",
     "type": ["Dark", "Normal"],
     "ability": ["Gluttony", "Hustle", "Thick Fat"]
+  },
+  {
+    "id": 20,
+    "name": "Raticate",
+    "base": "Raticate",
+    "tag": "",
+    "type": ["Normal"],
+    "ability": ["Run Away", "Guts", "Hustle"]
   },
   {
     "id": 20,
@@ -17,11 +33,27 @@
   },
   {
     "id": 26,
+    "name": "Raichu",
+    "base": "Raichu",
+    "tag": "",
+    "type": ["Electric"],
+    "ability": ["Static", "Lightning Rod"]
+  },
+  {
+    "id": 26,
     "name": "Alolan Raichu",
     "base": "Raichu",
     "tag": "Alola",
     "type": ["Electric", "Psychic"],
     "ability": ["Surge Surfer"]
+  },
+  {
+    "id": 27,
+    "name": "Sandshrew",
+    "base": "Sandshrew",
+    "tag": "",
+    "type": ["Ground"],
+    "ability": ["Sand Veil", "Sand Rush"]
   },
   {
     "id": 27,
@@ -33,11 +65,27 @@
   },
   {
     "id": 28,
+    "name": "Sandslash",
+    "base": "Sandslash",
+    "tag": "",
+    "type": ["Ground"],
+    "ability": ["Sand Veil", "Sand Rush"]
+  },
+  {
+    "id": 28,
     "name": "Alolan Sandslash",
     "base": "Sandslash",
     "tag": "Alola",
     "type": ["Ice", "Steel"],
     "ability": ["Snow Cloak", "Slush Rush"]
+  },
+  {
+    "id": 37,
+    "name": "Vulpix",
+    "base": "Vulpix",
+    "tag": "",
+    "type": ["Fire"],
+    "ability": ["Flash Fire", "Drought"]
   },
   {
     "id": 37,
@@ -49,11 +97,27 @@
   },
   {
     "id": 38,
+    "name": "Ninetales",
+    "base": "Ninetales",
+    "tag": "",
+    "type": ["Fire"],
+    "ability": ["Flash Fire", "Drought"]
+  },
+  {
+    "id": 38,
     "name": "Alolan Ninetales",
     "base": "Ninetales",
     "tag": "Alola",
     "type": ["Ice", "Fairy"],
     "ability": ["Snow Cloak", "Snow Warning"]
+  },
+  {
+    "id": 50,
+    "name": "Diglett",
+    "base": "Diglett",
+    "tag": "",
+    "type": ["Ground"],
+    "ability": ["Sand Veil", "Arena Trap", "Sand Force"]
   },
   {
     "id": 50,
@@ -65,11 +129,27 @@
   },
   {
     "id": 51,
+    "name": "Dugtrio",
+    "base": "Dugtrio",
+    "tag": "",
+    "type": ["Ground"],
+    "ability": ["Sand Veil", "Arena Trap", "Sand Force"]
+  },
+  {
+    "id": 51,
     "name": "Alolan Dugtrio",
     "base": "Dugtrio",
     "tag": "Alola",
     "type": ["Ground", "Steel"],
     "ability": ["Sand Veil", "Tangling Hair", "Sand Force"]
+  },
+  {
+    "id": 52,
+    "name": "Meowth",
+    "base": "Meowth",
+    "tag": "",
+    "type": ["Normal"],
+    "ability": ["Pickup", "Technician", "Unnerve"]
   },
   {
     "id": 52,
@@ -89,11 +169,27 @@
   },
   {
     "id": 53,
+    "name": "Persian",
+    "base": "Persian",
+    "tag": "",
+    "type": ["Normal"],
+    "ability": ["Limber", "Technician", "Unnerve"]
+  },
+  {
+    "id": 53,
     "name": "Alolan Persian",
     "base": "Persian",
     "tag": "Alola",
     "type": ["Dark"],
     "ability": ["Fur Coat", "Technician", "Rattled"]
+  },
+  {
+    "id": 74,
+    "name": "Geodude",
+    "base": "Geodude",
+    "tag": "",
+    "type": ["Rock", "Ground"],
+    "ability": ["Rock Head", "Sturdy", "Sand Veil"]
   },
   {
     "id": 74,
@@ -105,11 +201,27 @@
   },
   {
     "id": 75,
+    "name": "Graveler",
+    "base": "Graveler",
+    "tag": "",
+    "type": ["Rock", "Ground"],
+    "ability": ["Rock Head", "Sturdy", "Sand Veil"]
+  },
+  {
+    "id": 75,
     "name": "Alolan Graveler",
     "base": "Graveler",
     "tag": "Alola",
     "type": ["Rock", "Electric"],
     "ability": ["Magnet Pull", "Sturdy", "Galvanize"]
+  },
+  {
+    "id": 76,
+    "name": "Golem",
+    "base": "Golem",
+    "tag": "",
+    "type": ["Rock", "Ground"],
+    "ability": ["Rock Head", "Sturdy", "Sand Veil"]
   },
   {
     "id": 76,
@@ -121,11 +233,27 @@
   },
   {
     "id": 77,
+    "name": "Ponyta",
+    "base": "Ponyta",
+    "tag": "",
+    "type": ["Fire"],
+    "ability": ["Run Away", "Flash Fire", "Flame Body"]
+  },
+  {
+    "id": 77,
     "name": "Galarian Ponyta",
     "base": "Ponyta",
     "tag": "Galar",
     "type": ["Psychic"],
     "ability": ["Run Away", "Pastel Veil", "Anticipation"]
+  },
+  {
+    "id": 78,
+    "name": "Rapidash",
+    "base": "Rapidash",
+    "tag": "",
+    "type": ["Fire"],
+    "ability": ["Run Away", "Flash Fire", "Flame Body"]
   },
   {
     "id": 78,
@@ -137,11 +265,27 @@
   },
   {
     "id": 79,
+    "name": "Slowpoke",
+    "base": "Slowpoke",
+    "tag": "",
+    "type": ["Water", "Psychic"],
+    "ability": ["Oblivious", "Own Tempo", "Regenerator"]
+  },
+  {
+    "id": 79,
     "name": "Galarian Slowpoke",
     "base": "Slowpoke",
     "tag": "Galar",
     "type": ["Psychic"],
     "ability": ["Gluttony", "Own Tempo", "Regenerator"]
+  },
+  {
+    "id": 80,
+    "name": "Slowbro",
+    "base": "Slowbro",
+    "tag": "",
+    "type": ["Water", "Psychic"],
+    "ability": ["Oblivious", "Own Tempo", "Regenerator"]
   },
   {
     "id": 80,
@@ -153,11 +297,27 @@
   },
   {
     "id": 83,
+    "name": "Farfetch'd",
+    "base": "Farfetch'd",
+    "tag": "",
+    "type": ["Normal", "Flying"],
+    "ability": ["Keen Eye", "Inner Focus", "Defiant"]
+  },
+  {
+    "id": 83,
     "name": "Galarian Farfetch'd",
     "base": "Farfetch'd",
     "tag": "Galar",
     "type": ["Fighting"],
     "ability": ["Steadfast", "Scrappy"]
+  },
+  {
+    "id": 88,
+    "name": "Grimer",
+    "base": "Grimer",
+    "tag": "",
+    "type": ["Poison"],
+    "ability": ["Stench", "Sticky Hold", "Poison Touch"]
   },
   {
     "id": 88,
@@ -169,11 +329,27 @@
   },
   {
     "id": 89,
+    "name": "Muk",
+    "base": "Muk",
+    "tag": "",
+    "type": ["Poison"],
+    "ability": ["Stench", "Sticky Hold", "Poison Touch"]
+  },
+  {
+    "id": 89,
     "name": "Alolan Muk",
     "base": "Muk",
     "tag": "Alola",
     "type": ["Poison", "Dark"],
     "ability": ["Poison Touch", "Gluttony", "Power of Alchemy"]
+  },
+  {
+    "id": 103,
+    "name": "Exeggutor",
+    "base": "Exeggutor",
+    "tag": "",
+    "type": ["Grass", "Psychic"],
+    "ability": ["Chlorophyll", "Harvest"]
   },
   {
     "id": 103,
@@ -185,11 +361,27 @@
   },
   {
     "id": 105,
+    "name": "Marowak",
+    "base": "Marowak",
+    "tag": "",
+    "type": ["Ground"],
+    "ability": ["Rock Head", "Lightning Rod", "Battle Armor"]
+  },
+  {
+    "id": 105,
     "name": "Alolan Marowak",
     "base": "Marowak",
     "tag": "Alola",
     "type": ["Fire", "Ghost"],
     "ability": ["Cursed Body", "Lightning Rod", "Rock Head"]
+  },
+  {
+    "id": 110,
+    "name": "Weezing",
+    "base": "Weezing",
+    "tag": "",
+    "type": ["Poison"],
+    "ability": ["Levitate", "Neutralizing Gas", "Stench"]
   },
   {
     "id": 110,
@@ -201,11 +393,27 @@
   },
   {
     "id": 122,
+    "name": "Mr. Mime",
+    "base": "Mr. Mime",
+    "tag": "",
+    "type": ["Psychic", "Fairy"],
+    "ability": ["Soundproof", "Filter", "Technician"]
+  },
+  {
+    "id": 122,
     "name": "Galarian Mr. Mime",
     "base": "Mr. Mime",
     "tag": "Galar",
     "type": ["Ice", "Psychic"],
     "ability": ["Vital Spirit", "Screen Cleaner", "Ice Body"]
+  },
+  {
+    "id": 144,
+    "name": "Articuno",
+    "base": "Articuno",
+    "tag": "",
+    "type": ["Ice", "Flying"],
+    "ability": ["Pressure", "Snow Cloak"]
   },
   {
     "id": 144,
@@ -217,11 +425,27 @@
   },
   {
     "id": 145,
+    "name": "Zapdos",
+    "base": "Zapdos",
+    "tag": "",
+    "type": ["Electric", "Flying"],
+    "ability": ["Pressure", "Static"]
+  },
+  {
+    "id": 145,
     "name": "Galarian Zapdos",
     "base": "Zapdos",
     "tag": "Galar",
     "type": ["Fighting", "Flying"],
     "ability": ["Defiant"]
+  },
+  {
+    "id": 146,
+    "name": "Moltres",
+    "base": "Moltres",
+    "tag": "",
+    "type": ["Fire", "Flying"],
+    "ability": ["Pressure", "Flame Body"]
   },
   {
     "id": 146,
@@ -233,11 +457,27 @@
   },
   {
     "id": 199,
+    "name": "Slowking",
+    "base": "Slowking",
+    "tag": "",
+    "type": ["Water", "Psychic"],
+    "ability": ["Oblivious", "Own Tempo", "Regenerator"]
+  },
+  {
+    "id": 199,
     "name": "Galarian Slowking",
     "base": "Slowking",
     "tag": "Galar",
     "type": ["Poison", "Psychic"],
     "ability": ["Curious Medicine", "Own Tempo", "Regenerator"]
+  },
+  {
+    "id": 222,
+    "name": "Corsola",
+    "base": "Corsola",
+    "tag": "",
+    "type": ["Water", "Rock"],
+    "ability": ["Hustle", "Natural Cure", "Regenerator"]
   },
   {
     "id": 222,
@@ -249,10 +489,26 @@
   },
   {
     "id": 263,
+    "name": "Zigzagoon",
+    "base": "Zigzagoon",
+    "tag": "",
+    "type": ["Normal"],
+    "ability": ["Pickup", "Gluttony", "Quick Feet"]
+  },
+  {
+    "id": 263,
     "name": "Galarian Zigzagoon",
     "base": "Zigzagoon",
     "tag": "Galar",
     "type": ["Dark", "Normal"],
+    "ability": ["Pickup", "Gluttony", "Quick Feet"]
+  },
+  {
+    "id": 264,
+    "name": "Linoone",
+    "base": "Linoone",
+    "tag": "",
+    "type": ["Normal"],
     "ability": ["Pickup", "Gluttony", "Quick Feet"]
   },
   {
@@ -262,6 +518,230 @@
     "tag": "Galar",
     "type": ["Dark", "Normal"],
     "ability": ["Pickup", "Gluttony", "Quick Feet"]
+  },
+  {
+    "id": 386,
+    "name": "Normal Forme",
+    "base": "Deoxys",
+    "tag": "Normal",
+    "type": ["Psychic"],
+    "ability": ["Pressure"]
+  },
+  {
+    "id": 386,
+    "name": "Attack Forme",
+    "base": "Deoxys",
+    "tag": "Attack",
+    "type": ["Psychic"],
+    "ability": ["Pressure"]
+  },
+  {
+    "id": 386,
+    "name": "Defense Forme",
+    "base": "Deoxys",
+    "tag": "Defense",
+    "type": ["Psychic"],
+    "ability": ["Pressure"]
+  },
+  {
+    "id": 386,
+    "name": "Speed Forme",
+    "base": "Deoxys",
+    "tag": "Speed",
+    "type": ["Psychic"],
+    "ability": ["Pressure"]
+  },
+  {
+    "id": 412,
+    "name": "Plant Cloak",
+    "base": "Burmy",
+    "tag": "Plant",
+    "type": ["Bug"],
+    "ability": ["Shed Skin", "Overcoat"]
+  },
+  {
+    "id": 412,
+    "name": "Sandy Cloak",
+    "base": "Burmy",
+    "tag": "Sandy",
+    "type": ["Bug"],
+    "ability": ["Shed Skin", "Overcoat"]
+  },
+  {
+    "id": 412,
+    "name": "Trash Cloak",
+    "base": "Burmy",
+    "tag": "Trash",
+    "type": ["Bug"],
+    "ability": ["Shed Skin", "Overcoat"]
+  },
+  {
+    "id": 413,
+    "name": "Plant Cloak",
+    "base": "Wormadam",
+    "tag": "Plant",
+    "type": ["Bug", "Grass"],
+    "ability": ["Anticipation", "Overcoat"]
+  },
+  {
+    "id": 413,
+    "name": "Sandy Cloak",
+    "base": "Wormadam",
+    "tag": "Sandy",
+    "type": ["Bug", "Ground"],
+    "ability": ["Anticipation", "Overcoat"]
+  },
+  {
+    "id": 413,
+    "name": "Trash Cloak",
+    "base": "Wormadam",
+    "tag": "Trash",
+    "type": ["Bug", "Steel"],
+    "ability": ["Anticipation", "Overcoat"]
+  },
+  {
+    "id": 479,
+    "name": "Rotom",
+    "base": "Rotom",
+    "tag": "",
+    "type": ["Electric", "Ghost"],
+    "ability": ["Levitate"]
+  },
+  {
+    "id": 479,
+    "name": "Heat Rotom",
+    "base": "Rotom",
+    "tag": "Heat",
+    "type": ["Electric", "Fire"],
+    "ability": ["Levitate"]
+  },
+  {
+    "id": 479,
+    "name": "Wash Rotom",
+    "base": "Rotom",
+    "tag": "Wash",
+    "type": ["Electric", "Water"],
+    "ability": ["Levitate"]
+  },
+  {
+    "id": 479,
+    "name": "Frost Rotom",
+    "base": "Rotom",
+    "tag": "Frost",
+    "type": ["Electric", "Ice"],
+    "ability": ["Levitate"]
+  },
+  {
+    "id": 479,
+    "name": "Fan Rotom",
+    "base": "Rotom",
+    "tag": "Fan",
+    "type": ["Electric", "Flying"],
+    "ability": ["Levitate"]
+  },
+  {
+    "id": 479,
+    "name": "Mow Rotom",
+    "base": "Rotom",
+    "tag": "Mow",
+    "type": ["Electric", "Grass"],
+    "ability": ["Levitate"]
+  },
+  {
+    "id": 483,
+    "name": "Dialga",
+    "base": "Dialga",
+    "tag": "",
+    "type": ["Steel", "Dragon"],
+    "ability": ["Pressure", "Telepathy"]
+  },
+  {
+    "id": 483,
+    "name": "Origin Forme",
+    "base": "Dialga",
+    "tag": "Origin",
+    "type": ["Steel", "Dragon"],
+    "ability": ["Pressure", "Telepathy"]
+  },
+  {
+    "id": 484,
+    "name": "Palkia",
+    "base": "Palkia",
+    "tag": "",
+    "type": ["Water", "Dragon"],
+    "ability": ["Pressure", "Telepathy"]
+  },
+  {
+    "id": 484,
+    "name": "Origin Forme",
+    "base": "Palkia",
+    "tag": "Origin",
+    "type": ["Water", "Dragon"],
+    "ability": ["Pressure", "Telepathy"]
+  },
+  {
+    "id": 487,
+    "name": "Altered Forme",
+    "base": "Giratina",
+    "tag": "Altered",
+    "type": ["Ghost", "Dragon"],
+    "ability": ["Pressure", "Telepathy"]
+  },
+  {
+    "id": 487,
+    "name": "Origin Forme",
+    "base": "Giratina",
+    "tag": "Origin",
+    "type": ["Ghost", "Dragon"],
+    "ability": ["Levitate"]
+  },
+  {
+    "id": 492,
+    "name": "Land Forme",
+    "base": "Shaymin",
+    "tag": "Land",
+    "type": ["Grass"],
+    "ability": ["Natural Cure"]
+  },
+  {
+    "id": 492,
+    "name": "Sky Forme",
+    "base": "Shaymin",
+    "tag": "Land",
+    "type": ["Grass", "Flying"],
+    "ability": ["Serene Grace"]
+  },
+  {
+    "id": 550,
+    "name": "Red-Striped Form",
+    "base": "Basculin",
+    "tag": "Red-Striped",
+    "type": ["Water"],
+    "ability": ["Reckless", "Adaptability", "Mold Breaker"]
+  },
+  {
+    "id": 550,
+    "name": "Blue-Striped Form",
+    "base": "Basculin",
+    "tag": "Blue-Striped",
+    "type": ["Water"],
+    "ability": ["Rock Head", "Adaptability", "Mold Breaker"]
+  },
+  {
+    "id": 550,
+    "name": "White-Striped Form",
+    "base": "Basculin",
+    "tag": "White-Striped",
+    "type": ["Water"],
+    "ability": ["Rattled", "Adaptability", "Mold Breaker"]
+  },
+  {
+    "id": 554,
+    "name": "Darumaka",
+    "base": "Darumaka",
+    "tag": "",
+    "type": ["Fire"],
+    "ability": ["Hustle", "Inner Focus"]
   },
   {
     "id": 554,
@@ -275,7 +755,7 @@
     "id": 555,
     "name": "Standard Mode",
     "base": "Darmanitan",
-    "tag": "",
+    "tag": "Standard",
     "type": ["Fire"],
     "ability": ["Sheer Force", "Zen Mode"]
   },
@@ -305,11 +785,91 @@
   },
   {
     "id": 562,
+    "name": "Yamask",
+    "base": "Yamask",
+    "tag": "",
+    "type": ["Ghost"],
+    "ability": ["Mummy"]
+  },
+  {
+    "id": 562,
     "name": "Galarian Yamask",
     "base": "Yamask",
     "tag": "Galar",
     "type": ["Ground", "Ghost"],
     "ability": ["Wandering Spirit"]
+  },
+  {
+    "id": 585,
+    "name": "Spring Form",
+    "base": "Deerling",
+    "tag": "Spring",
+    "type": ["Normal", "Grass"],
+    "ability": ["Chlorophyll", "Sap Sipper", "Serene Grace"]
+  },
+  {
+    "id": 585,
+    "name": "Summer Form",
+    "base": "Deerling",
+    "tag": "Summer",
+    "type": ["Normal", "Grass"],
+    "ability": ["Chlorophyll", "Sap Sipper", "Serene Grace"]
+  },
+  {
+    "id": 585,
+    "name": "Autumn Form",
+    "base": "Deerling",
+    "tag": "Autumn",
+    "type": ["Normal", "Grass"],
+    "ability": ["Chlorophyll", "Sap Sipper", "Serene Grace"]
+  },
+  {
+    "id": 585,
+    "name": "Winter Form",
+    "base": "Deerling",
+    "tag": "Winter",
+    "type": ["Normal", "Grass"],
+    "ability": ["Chlorophyll", "Sap Sipper", "Serene Grace"]
+  },
+  {
+    "id": 586,
+    "name": "Spring Form",
+    "base": "Sawsbuck",
+    "tag": "Spring",
+    "type": ["Normal", "Grass"],
+    "ability": ["Chlorophyll", "Sap Sipper", "Serene Grace"]
+  },
+  {
+    "id": 586,
+    "name": "Summer Form",
+    "base": "Sawsbuck",
+    "tag": "Summer",
+    "type": ["Normal", "Grass"],
+    "ability": ["Chlorophyll", "Sap Sipper", "Serene Grace"]
+  },
+  {
+    "id": 586,
+    "name": "Autumn Form",
+    "base": "Sawsbuck",
+    "tag": "Autumn",
+    "type": ["Normal", "Grass"],
+    "ability": ["Chlorophyll", "Sap Sipper", "Serene Grace"]
+  },
+  {
+    "id": 586,
+    "name": "Winter Form",
+    "base": "Sawsbuck",
+    "tag": "Winter",
+    "type": ["Normal", "Grass"],
+    "ability": ["Chlorophyll", "Sap Sipper", "Serene Grace"]
+  },
+  {
+    "id": 618,
+    "name": "Stunfisk",
+    "base": "Stunfisk",
+    "tag": "",
+    "type": ["Ground", "Electric"],
+    "ability": ["Static", "Limber", "Sand Veil"]
   },
   {
     "id": 618,
@@ -318,5 +878,109 @@
     "tag": "Galar",
     "type": ["Ground", "Steel"],
     "ability": ["Mimicry"]
+  },
+  {
+    "id": 641,
+    "name": "Incarnate Forme",
+    "base": "Tornadus",
+    "tag": "Incarnate",
+    "type": ["Flying"],
+    "ability": ["Prankster", "Defiant"]
+  },
+  {
+    "id": 641,
+    "name": "Therian Forme",
+    "base": "Tornadus",
+    "tag": "Therian",
+    "type": ["Flying"],
+    "ability": ["Regenerator"]
+  },
+  {
+    "id": 642,
+    "name": "Incarnate Forme",
+    "base": "Thundurus",
+    "tag": "Incarnate",
+    "type": ["Electric", "Flying"],
+    "ability": ["Prankster", "Defiant"]
+  },
+  {
+    "id": 642,
+    "name": "Therian Forme",
+    "base": "Thundurus",
+    "tag": "Therian",
+    "type": ["Electric", "Flying"],
+    "ability": ["Volt Absorb"]
+  },
+  {
+    "id": 645,
+    "name": "Incarnate Forme",
+    "base": "Landorus",
+    "tag": "Incarnate",
+    "type": ["Ground", "Flying"],
+    "ability": ["Sand Force", "Sheer Force"]
+  },
+  {
+    "id": 645,
+    "name": "Therian Forme",
+    "base": "Landorus",
+    "tag": "Therian",
+    "type": ["Ground", "Flying"],
+    "ability": ["Intimidate"]
+  },
+  {
+    "id": 646,
+    "name": "Kyurem",
+    "base": "Kyurem",
+    "tag": "",
+    "type": ["Dragon", "Ice"],
+    "ability": ["Pressure"]
+  },
+  {
+    "id": 646,
+    "name": "White Kyurem",
+    "base": "Kyurem",
+    "tag": "White",
+    "type": ["Dragon", "Ice"],
+    "ability": ["Turboblaze"]
+  },
+  {
+    "id": 646,
+    "name": "Black Kyurem",
+    "base": "Kyurem",
+    "tag": "Black",
+    "type": ["Dragon", "Ice"],
+    "ability": ["Teravolt"]
+  },
+  {
+    "id": 647,
+    "name": "Ordinary Form",
+    "base": "Keldeo",
+    "tag": "Ordinary",
+    "type": ["Water", "Fighting"],
+    "ability": ["Justified"]
+  },
+  {
+    "id": 647,
+    "name": "Resolute Form",
+    "base": "Keldeo",
+    "tag": "Resolute",
+    "type": ["Water", "Fighting"],
+    "ability": ["Justified"]
+  },
+  {
+    "id": 648,
+    "name": "Aria Forme",
+    "base": "Meloetta",
+    "tag": "Aria",
+    "type": ["Normal", "Psychic"],
+    "ability": ["Serene Grace"]
+  },
+  {
+    "id": 648,
+    "name": "Pirouette Forme",
+    "base": "Meloetta",
+    "tag": "Pirouette",
+    "type": ["Normal", "Fighting"],
+    "ability": ["Serene Grace"]
   }
 ]

@@ -51,17 +51,23 @@ function App() {
   useEffect(() => {
     const defActive: ActiveAbilityMap = {};
 
-    //check for ability that affects type chart
+    //combine pokedex and altformdex matches
     found.forEach((found) => {
-      const firstmatch = found.ability.find((item) =>
-        abilityMulti.some((item2) => item === item2.ability)
-      );
-      if (firstmatch) {
-        defActive[found.name] = firstmatch;
-      }
+      const rmatch = altformdex.filter((item) => item.id === found.id);
+      const allMatches = [...rmatch, found];
+
+      //check for ability that affects type chart
+      allMatches.forEach((match) => {
+        const amatch = match.ability.find((item) =>
+          abilityMulti.some((item2) => item === item2.ability)
+        );
+        if (amatch) {
+          defActive[match.name] = amatch;
+        }
+      });
     });
 
-    //sets avtive ability & don't replace known active
+    //sets active ability / don't overwrite known
     if (Object.keys(defActive).length > 0) {
       setActiveAbility((prev) => {
         const newState = { ...prev };

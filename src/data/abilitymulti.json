@@ -121,5 +121,17 @@
     "multi": {
       "Fire": 0.0
     }
+  },
+  {
+    "ability": "Lightning Rod",
+    "multi": {
+      "Electric": 0.0
+    }
+  },
+  {
+    "ability": "Storm Drain",
+    "multi": {
+      "Water": 0.0
+    }
   }
 ]
