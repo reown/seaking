@@ -66,9 +66,10 @@ export const getMulti = (type: string[], activeAbility?: string) => {
       (item) => item.ability === activeAbility
     )?.multi;
     if (amatch) {
-      Object.keys(amatch).forEach((key) => {
-        if (amatch[key] !== undefined) {
-          multi[key] *= amatch[key];
+      const bmatch = amatch as unknown as MultiMap;
+      Object.keys(bmatch).forEach((key) => {
+        if (bmatch[key] !== undefined) {
+          multi[key] *= bmatch[key];
         }
       });
     }
