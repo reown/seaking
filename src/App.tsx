@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { getSprite, getDesc, getMulti } from "./helper";
-import pokedexData from "./data/pokedex.json";
-import nofairydexData from "./data/nofairydex.json";
-import altformdexData from "./data/altformdex.json";
-import abilityMultiData from "./data/abilitymulti.json";
+import {
+  getPokemon,
+  getAltform,
+  getDefActive,
+  getSpriteName,
+  getAbilityDesc,
+  getTypeMulti,
+} from "./helper";
 import "./css/App.css";
 import "./css/Type.css";
 
@@ -23,18 +26,6 @@ interface AltformdexMap {
   ability: string[];
 }
 
-interface AbilityMultiMap {
-  ability: string;
-  multi: Partial<Record<string, number>>;
-}
-
-type ActiveAbilityMap = Record<string, string>;
-
-const pokedex: PokedexMap[] = pokedexData;
-const nofairydex: PokedexMap[] = nofairydexData;
-const altformdex: AltformdexMap[] = altformdexData;
-const abilityMulti: AbilityMultiMap[] = abilityMultiData;
-
 function App() {
   const [query, setQuery] = useState<string>("");
   const [found, setFound] = useState<PokedexMap[]>([]);
@@ -42,72 +33,26 @@ function App() {
   const [shiny, setShiny] = useState<boolean>(false);
   const [hoverAbility, setHoverAbility] = useState<string | null>(null);
   const [hoverPokemon, setHoverPokemon] = useState<string | null>(null);
-  const [activeAbility, setActiveAbility] = useState<ActiveAbilityMap>({});
+  const [activeAbility, setActiveAbility] = useState<Record<string, string>>(
+    {}
+  );
 
   useEffect(() => {
-    getPokemon(query);
+    //rerender on fairy toggle
+    handleSearchChange(query);
   }, [fairy]);
 
-  useEffect(() => {
-    const defActive: ActiveAbilityMap = {};
-
-    //combine pokedex and altformdex matches
-    found.forEach((found) => {
-      const rmatch = altformdex.filter((item) => item.id === found.id);
-      const allMatches = [...rmatch, found];
-
-      //check for ability that affects type chart
-      allMatches.forEach((match) => {
-        const amatch = match.ability.find((item) =>
-          abilityMulti.some((item2) => item === item2.ability)
-        );
-        if (amatch) {
-          defActive[match.name] = amatch;
-        }
-      });
-    });
-
-    //sets active ability / don't overwrite known
-    if (Object.keys(defActive).length > 0) {
-      setActiveAbility((prev) => {
-        const newState = { ...prev };
-        Object.keys(defActive).forEach((key) => {
-          if (!(key in newState)) {
-            newState[key] = defActive[key];
-          }
-        });
-
-        return newState;
-      });
-    }
-  }, [found]);
-
-  const getPokemon = (e: string) => {
-    setQuery(e);
+  const handleSearchChange = (e: string) => {
     setFound([]);
-
-    //save active abilities until new search
-    if (e.length < 3) {
-      setActiveAbility({});
-    }
-
-    //search pokedex for names that includes substring
     if (e.length > 2) {
-      const checkf = pokedex.filter((item) =>
-        item.name.toLowerCase().includes(e.toLowerCase())
-      );
-
-      //check if fairy is toggled, replace from pokedex_nofairy
-      if (fairy) {
-        const checknf = checkf.map((item) => {
-          const match = nofairydex.find((item2) => item.id === item2.id);
-
-          return match ? match : item;
-        });
-        setFound(checknf);
-      } else {
-        setFound(checkf);
-      }
+      const temp = getPokemon(e, fairy);
+      setFound(temp);
+      setActiveAbility((prev) => getDefActive(prev, temp));
+      setQuery(e);
+    } else {
+      //save active abilities until new search
+      setActiveAbility({});
+      setQuery("");
     }
   };
 
@@ -168,7 +113,7 @@ function App() {
           </div>
           <div className="col sprite">
             <span
-              className={`pokesprite pokemon ${getSprite(
+              className={`pokesprite pokemon ${getSpriteName(
                 "base" in found ? found.base : found.name,
                 "tag" in found ? found.tag : ""
               )} ${shiny ? "shiny" : ""}`}
@@ -200,7 +145,7 @@ function App() {
                 >
                   {isHA ? `HA: ${ability}` : ability}
                   {hoverAbility === ability && hoverPokemon === found.name && (
-                    <div className="hover">{getDesc(ability, isHA)}</div>
+                    <div className="hover">{getAbilityDesc(ability, isHA)}</div>
                   )}
                 </div>
               );
@@ -212,7 +157,7 @@ function App() {
   };
 
   const renderMulti = (type: string[], activeAbility: string) => {
-    const [weak, strong, immune] = getMulti(type, activeAbility);
+    const [weak, strong, immune] = getTypeMulti(type, activeAbility);
 
     return (
       <div className="card-body">
@@ -303,13 +248,13 @@ function App() {
           placeholder="Search"
           className="text"
           onChange={(e) => {
-            getPokemon(e.target.value);
+            handleSearchChange(e.target.value);
           }}
         />
       </div>
       {found.map((found) => {
         //check for alternate forms with id
-        const rmatch = altformdex.filter((item) => item.id === found.id);
+        const rmatch = getAltform(found.id);
         const hasAlternate = rmatch.length > 0;
 
         return (

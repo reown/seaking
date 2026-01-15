@@ -1,10 +1,29 @@
+import pokedexData from "./data/pokedex.json";
+import nofairydexData from "./data/nofairydex.json";
+import altformdexData from "./data/altformdex.json";
 import abilityDescData from "./data/abilitydesc.json";
 import typeChartData from "./data/typechart.json";
 import abilityMultiData from "./data/abilitymulti.json";
 
+interface PokedexMap {
+  id: number;
+  name: string;
+  type: string[];
+  ability: string[];
+}
+
+interface AltformdexMap {
+  id: number;
+  name: string;
+  base: string;
+  tag: string;
+  type: string[];
+  ability: string[];
+}
+
 interface TypeChartMap {
   type: string;
-  multi: { [key: string]: number };
+  multi: MultiMap;
 }
 
 interface AbilityMultiMap {
@@ -13,12 +32,71 @@ interface AbilityMultiMap {
 }
 
 type MultiMap = Record<string, number>;
+type ActiveAbilityMap = Record<string, string>;
 
+const pokedex: PokedexMap[] = pokedexData;
+const nofairydex: PokedexMap[] = nofairydexData;
+const altformdex: AltformdexMap[] = altformdexData;
 const abilityDesc: Record<string, string> = abilityDescData;
 const typeChart: TypeChartMap[] = typeChartData;
 const abilityMulti: AbilityMultiMap[] = abilityMultiData;
 
-export const getSprite = (name: string, tag: string) => {
+export const getPokemon = (e: string, fairy: boolean) => {
+  //search pokedex for names that includes substring
+  const checkf = pokedex.filter((item) =>
+    item.name.toLowerCase().includes(e.toLowerCase())
+  );
+
+  //check if fairy is toggled, replace from nofairydex
+  if (fairy) {
+    const checknf = checkf.map((item) => {
+      const match = nofairydex.find((item2) => item.id === item2.id);
+
+      return match ? match : item;
+    });
+
+    return checknf;
+  } else {
+    return checkf;
+  }
+};
+
+export const getAltform = (id: number) => {
+  return altformdex.filter((item) => item.id === id);
+};
+
+export const getDefActive = (prev: ActiveAbilityMap, found: PokedexMap[]) => {
+  //combine pokedex and altformdex matches
+  const defActive: ActiveAbilityMap = {};
+  found.forEach((found) => {
+    const rmatch = altformdex.filter((item) => item.id === found.id);
+    const allMatches = [...rmatch, found];
+
+    //check for ability that affects type chart
+    allMatches.forEach((match) => {
+      const amatch = match.ability.find((item) =>
+        abilityMulti.some((item2) => item === item2.ability)
+      );
+      if (amatch) {
+        defActive[match.name] = amatch;
+      }
+    });
+  });
+
+  //sets active ability / don't overwrite known
+  const newState = { ...prev };
+  if (Object.keys(defActive).length > 0) {
+    Object.keys(defActive).forEach((key) => {
+      if (!(key in newState)) {
+        newState[key] = defActive[key];
+      }
+    });
+  }
+
+  return newState;
+};
+
+export const getSpriteName = (name: string, tag: string) => {
   //match base pokesprite syntax
   let spriteName = name
     .toLowerCase()
@@ -28,6 +106,7 @@ export const getSprite = (name: string, tag: string) => {
     .replace(/♀/g, "-f")
     .replace(/♂/g, "-m");
 
+  //concat tag for alt forms syntax
   if (tag) {
     spriteName = spriteName.concat("-", tag.toLowerCase());
   }
@@ -35,7 +114,7 @@ export const getSprite = (name: string, tag: string) => {
   return spriteName;
 };
 
-export const getDesc = (ability: string, isHA: boolean) => {
+export const getAbilityDesc = (ability: string, isHA: boolean) => {
   //specify HA in description / return not found
   if (!abilityDesc[ability]) {
     return "Ability description not found";
@@ -46,8 +125,8 @@ export const getDesc = (ability: string, isHA: boolean) => {
     : abilityDesc[ability];
 };
 
-export const getMulti = (type: string[], activeAbility?: string) => {
-  //shallow copy from json
+export const getTypeMulti = (type: string[], activeAbility: string) => {
+  //shallow copy default from json
   let multi = {
     ...typeChart.find((def) => def.type === "default")!.multi,
   };
@@ -66,10 +145,10 @@ export const getMulti = (type: string[], activeAbility?: string) => {
       (item) => item.ability === activeAbility
     )?.multi;
     if (amatch) {
-      const bmatch = amatch as unknown as MultiMap;
-      Object.keys(bmatch).forEach((key) => {
-        if (bmatch[key] !== undefined) {
-          multi[key] *= bmatch[key];
+      //const bmatch = amatch as unknown as MultiMap;
+      Object.keys(amatch).forEach((key) => {
+        if (amatch[key] !== undefined) {
+          multi[key] *= amatch[key];
         }
       });
     }
