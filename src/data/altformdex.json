@@ -520,6 +520,70 @@
     "ability": ["Pickup", "Gluttony", "Quick Feet"]
   },
   {
+    "id": 351,
+    "name": "Castform",
+    "base": "Castform",
+    "tag": "",
+    "type": ["Normal"],
+    "ability": ["Forecast"]
+  },
+  {
+    "id": 351,
+    "name": "Sunny Form",
+    "base": "Castform",
+    "tag": "Sunny",
+    "type": ["Fire"],
+    "ability": ["Forecast"]
+  },
+  {
+    "id": 351,
+    "name": "Rainy Form",
+    "base": "Castform",
+    "tag": "Rainy",
+    "type": ["Water"],
+    "ability": ["Forecast"]
+  },
+  {
+    "id": 351,
+    "name": "Snowy Form",
+    "base": "Castform",
+    "tag": "Snowy",
+    "type": ["Ice"],
+    "ability": ["Forecast"]
+  },
+  {
+    "id": 382,
+    "name": "Kyogre",
+    "base": "Kyogre",
+    "tag": "",
+    "type": ["Water"],
+    "ability": ["Drizzle"]
+  },
+  {
+    "id": 382,
+    "name": "Primal Kyogre",
+    "base": "Kyogre",
+    "tag": "Primal",
+    "type": ["Water"],
+    "ability": ["Primordial Sea"]
+  },
+  {
+    "id": 383,
+    "name": "Groudon",
+    "base": "Groudon",
+    "tag": "",
+    "type": ["Ground"],
+    "ability": ["Drought"]
+  },
+  {
+    "id": 383,
+    "name": "Primal Groudon",
+    "base": "Groudon",
+    "tag": "Primal",
+    "type": ["Ground", "Fire"],
+    "ability": ["Desolate Land"]
+  },
+  {
     "id": 386,
     "name": "Normal Forme",
     "base": "Deoxys",
@@ -598,6 +662,54 @@
     "tag": "Trash",
     "type": ["Bug", "Steel"],
     "ability": ["Anticipation", "Overcoat"]
+  },
+  {
+    "id": 421,
+    "name": "Overcast Form",
+    "base": "Cherrim",
+    "tag": "Overcast",
+    "type": ["Grass"],
+    "ability": ["Flower Gift"]
+  },
+  {
+    "id": 421,
+    "name": "Sunshine Form",
+    "base": "Cherrim",
+    "tag": "Sunshine",
+    "type": ["Grass"],
+    "ability": ["Flower Gift"]
+  },
+  {
+    "id": 422,
+    "name": "West Sea",
+    "base": "Shellos",
+    "tag": "West",
+    "type": ["Water"],
+    "ability": ["Sticky Hold", "Storm Drain", "Sand Force"]
+  },
+  {
+    "id": 422,
+    "name": "East Sea",
+    "base": "Shellos",
+    "tag": "East",
+    "type": ["Water"],
+    "ability": ["Sticky Hold", "Storm Drain", "Sand Force"]
+  },
+  {
+    "id": 423,
+    "name": "West Sea",
+    "base": "Gastrodon",
+    "tag": "West",
+    "type": ["Water", "Ground"],
+    "ability": ["Sticky Hold", "Storm Drain", "Sand Force"]
+  },
+  {
+    "id": 423,
+    "name": "East Sea",
+    "base": "Gastrodon",
+    "tag": "East",
+    "type": ["Water", "Ground"],
+    "ability": ["Sticky Hold", "Storm Drain", "Sand Force"]
   },
   {
     "id": 479,
