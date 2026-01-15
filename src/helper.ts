@@ -145,10 +145,28 @@ export const getTypeMulti = (type: string[], activeAbility: string) => {
       (item) => item.ability === activeAbility
     )?.multi;
     if (amatch) {
-      //const bmatch = amatch as unknown as MultiMap;
-      Object.keys(amatch).forEach((key) => {
-        if (amatch[key] !== undefined) {
-          multi[key] *= amatch[key];
+      const bmatch = amatch as unknown as MultiMap;
+      Object.keys(bmatch).forEach((key1) => {
+        if (key1 === "SuperEffective") {
+          Object.keys(multi).forEach((key2) => {
+            if (multi[key2] > 1.0) {
+              multi[key2] *= bmatch[key1];
+            }
+          });
+        } else if (key1 === "Normal") {
+          Object.keys(multi).forEach((key2) => {
+            if (multi[key2] === 1.0) {
+              multi[key2] *= bmatch[key1];
+            }
+          });
+        } else if (key1 === "NotVeryEffective") {
+          Object.keys(multi).forEach((key2) => {
+            if (multi[key2] > 0.0 && multi[key2] < 1.0) {
+              multi[key2] *= bmatch[key1];
+            }
+          });
+        } else {
+          multi[key1] *= bmatch[key1];
         }
       });
     }
