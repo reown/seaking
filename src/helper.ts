@@ -44,7 +44,7 @@ const abilityMulti: AbilityMultiMap[] = abilityMultiData;
 export const getPokemon = (e: string, fairy: boolean) => {
   //search pokedex for names that includes substring
   const checkf = pokedex.filter((item) =>
-    item.name.toLowerCase().includes(e.toLowerCase())
+    item.name.toLowerCase().includes(e.toLowerCase()),
   );
 
   //check if fairy is toggled, replace from nofairydex
@@ -75,10 +75,10 @@ export const getDefActive = (prev: ActiveAbilityMap, found: PokedexMap[]) => {
     //check for ability that affects type chart
     allMatches.forEach((match) => {
       const amatch = match.ability.find((item) =>
-        abilityMulti.some((item2) => item === item2.ability)
+        abilityMulti.some((item2) => item === item2.ability),
       );
       if (amatch) {
-        defActive[match.name] = amatch;
+        defActive[`${found.id}-${match.name}`] = amatch;
       }
     });
   });
@@ -142,7 +142,7 @@ export const getTypeMulti = (type: string[], activeAbility: string) => {
   //check ability for multi
   if (activeAbility) {
     const amatch = abilityMulti.find(
-      (item) => item.ability === activeAbility
+      (item) => item.ability === activeAbility,
     )?.multi;
     if (amatch) {
       const bmatch = amatch as unknown as MultiMap;

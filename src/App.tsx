@@ -8,7 +8,8 @@ import {
   getTypeMulti,
 } from "./helper";
 import "./css/App.css";
-import "./css/Type.css";
+import "./css/type.css";
+import "./css/pokesprite-pokemon-gen8.css";
 
 interface PokedexMap {
   id: number;
@@ -34,7 +35,7 @@ function App() {
   const [hoverAbility, setHoverAbility] = useState<string | null>(null);
   const [hoverPokemon, setHoverPokemon] = useState<string | null>(null);
   const [activeAbility, setActiveAbility] = useState<Record<string, string>>(
-    {}
+    {},
   );
 
   useEffect(() => {
@@ -56,8 +57,8 @@ function App() {
     }
   };
 
-  const handleAbilityClick = (name: string, ability: string) => {
-    setActiveAbility((prev) => ({ ...prev, [name]: ability }));
+  const handleAbilityClick = (id: number, name: string, ability: string) => {
+    setActiveAbility((prev) => ({ ...prev, [`${id}-${name}`]: ability }));
   };
 
   const handleAbilityHover = (name: string | null, ability: string | null) => {
@@ -101,7 +102,7 @@ function App() {
 
   const renderPoke = (
     found: PokedexMap | AltformdexMap,
-    activeAbility: string
+    activeAbility: string,
   ) => {
     return (
       <div className="card-body">
@@ -115,7 +116,7 @@ function App() {
             <span
               className={`pokesprite pokemon ${getSpriteName(
                 "base" in found ? found.base : found.name,
-                "tag" in found ? found.tag : ""
+                "tag" in found ? found.tag : "",
               )} ${shiny ? "shiny" : ""}`}
             />
           </div>
@@ -134,7 +135,7 @@ function App() {
                 <div
                   className={`ability sub ${isSelected ? "selected" : ""}`}
                   onClick={() => {
-                    handleAbilityClick(found.name, ability);
+                    handleAbilityClick(found.id, found.name, ability);
                   }}
                   onMouseEnter={() => {
                     handleAbilityHover(found.name, ability);
@@ -212,13 +213,13 @@ function App() {
     );
   };
 
-  const renderNavTab = (name: string, isDefault: boolean) => {
+  const renderNavTab = (id: number, name: string, isDefault: boolean) => {
     return (
       <li className="nav-item">
         <button
           className={`nav-link ${isDefault ? "active" : ""}`}
           data-bs-toggle="tab"
-          data-bs-target={`#${name.replace(/[\s']+/g, "-")}`}
+          data-bs-target={`#${id}-${name.replace(/[\s']+/g, "-")}`}
           aria-selected={`${isDefault ? "true" : "false"}`}
         >
           {name}
@@ -231,10 +232,10 @@ function App() {
     return (
       <div
         className={`tab-pane fade ${isDefault ? "show active" : ""}`}
-        id={`${found.name.replace(/[\s']+/g, "-")}`}
+        id={`${found.id}-${found.name.replace(/[\s']+/g, "-")}`}
       >
-        {renderPoke(found, activeAbility[found.name])}
-        {renderMulti(found.type, activeAbility[found.name])}
+        {renderPoke(found, activeAbility[`${found.id}-${found.name}`])}
+        {renderMulti(found.type, activeAbility[`${found.id}-${found.name}`])}
       </div>
     );
   };
@@ -265,19 +266,25 @@ function App() {
                 <>
                   <ul className="nav nav-tabs">
                     {rmatch.map((item, index) =>
-                      renderNavTab(item.name, index === 0)
+                      renderNavTab(item.id, item.name, index === 0),
                     )}
                   </ul>
                   <div className="tab-content">
                     {rmatch.map((item, index) =>
-                      renderTabContent(item, index === 0)
+                      renderTabContent(item, index === 0),
                     )}
                   </div>
                 </>
               ) : (
                 <>
-                  {renderPoke(found, activeAbility[found.name])}
-                  {renderMulti(found.type, activeAbility[found.name])}
+                  {renderPoke(
+                    found,
+                    activeAbility[`${found.id}-${found.name}`],
+                  )}
+                  {renderMulti(
+                    found.type,
+                    activeAbility[`${found.id}-${found.name}`],
+                  )}
                 </>
               )}
             </div>
@@ -289,3 +296,5 @@ function App() {
 }
 
 export default App;
+
+//fix same form name ability selector

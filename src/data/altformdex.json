@@ -819,7 +819,7 @@
     "id": 492,
     "name": "Sky Forme",
     "base": "Shaymin",
-    "tag": "Land",
+    "tag": "Sky",
     "type": ["Grass", "Flying"],
     "ability": ["Serene Grace"]
   },
