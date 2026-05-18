@@ -9,6 +9,7 @@ Seeking weaknesses to aid my battle frontier matches
 - includes most alternate forms
 - abilities updated to gen9
 - ability selection
+- clickable names link to pokemondb
 
 ## To Do
 
@@ -16,7 +17,6 @@ Seeking weaknesses to aid my battle frontier matches
 - evolution chart
 - pin pokemon
 - fetch pokemon stats
-- link to pokemondb url
 
 ## Credits
 

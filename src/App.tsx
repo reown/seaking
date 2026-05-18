@@ -70,7 +70,11 @@ function App() {
     return (
       <nav className="navbar navbar-dark navbar-expand-lg">
         <div className="container-fluid">
-          <a className="navbar-brand" href="https://github.com/reown/seaking">
+          <a
+            className="navbar-brand"
+            href="https://github.com/reown/seaking"
+            target="_blank"
+          >
             Seaking
           </a>
           <ul className="navbar-nav ms-auto">
@@ -120,11 +124,19 @@ function App() {
               )} ${shiny ? "shiny" : ""}`}
             />
           </div>
-          <div className="col name">
+          <a
+            className="col name"
+            href={
+              "base" in found
+                ? `https://pokemondb.net/pokedex/${getSpriteName(found.base, "")}`
+                : `https://pokemondb.net/pokedex/${getSpriteName(found.name, "")}`
+            }
+            target="_blank"
+          >
             #{found.id}
             <br />
             {"base" in found ? found.base : found.name}
-          </div>
+          </a>
           <div className="col">
             {found.ability.map((ability, index, array) => {
               //check if is hidden ability, > 1 & last
@@ -296,5 +308,3 @@ function App() {
 }
 
 export default App;
-
-//fix same form name ability selector
